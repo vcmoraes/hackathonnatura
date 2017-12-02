@@ -6,7 +6,6 @@ import org.androidannotations.annotations.EActivity;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.activity.BaseActivity;
-import hackathonnatura.edeploy.com.br.hackathonnatura.view.activity.HomeActivity_;
 
 /**
  * Created by vcmoraes on 02/12/17.
@@ -21,7 +20,7 @@ public class MockLoginActivity extends BaseActivity {
 
     @Click(R.id.btn_login)
     void onLogin() {
-        HomeActivity_.intent(this).start();
+        Mock1Activity_.intent(this).start();
         finish();
     }
 }

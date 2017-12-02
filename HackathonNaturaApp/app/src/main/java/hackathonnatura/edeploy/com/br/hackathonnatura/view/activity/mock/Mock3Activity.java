@@ -1,6 +1,7 @@
 package hackathonnatura.edeploy.com.br.hackathonnatura.view.activity.mock;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
@@ -15,5 +16,11 @@ public class Mock3Activity extends BaseActivity {
     @AfterViews
     public void init() {
 
+    }
+
+    @Click(R.id.image_mock)
+    void onMock() {
+        Mock4Activity_.intent(this).start();
+        finish();
     }
 }
