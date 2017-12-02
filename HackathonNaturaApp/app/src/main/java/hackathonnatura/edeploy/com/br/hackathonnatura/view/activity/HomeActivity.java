@@ -77,21 +77,25 @@ public class HomeActivity extends BaseActivity {
     void onResultBarcode(int resultCode, Intent data) {
         switch (resultCode) {
             case RESULT_OK:
-                String contentBarcode = data.getStringExtra(Constants.CONTENT_BARCODE);
-                String result[] = contentBarcode.split(";");
-                Consultora consultora = consultoraDao.recuperarPorID(result[0]);
-                if (consultora == null) {
-                    consultora = new Consultora();
+                try {
+                    String contentBarcode = data.getStringExtra(Constants.CONTENT_BARCODE);
+                    String result[] = contentBarcode.split(";");
+                    Consultora consultora = consultoraDao.recuperarPorID(result[0]);
+                    if (consultora == null) {
+                        consultora = new Consultora();
+                    }
+                    consultora.setId(result[0]);
+                    consultora.setNome(result[1]);
+                    if (consultora.getDateCheckin() == null) {
+                        consultora.setDateCheckin(Calendar.getInstance().getTime());
+                    } else {
+                        consultora.setDateCheckout(Calendar.getInstance().getTime());
+                    }
+                    consultoraDao.salvar(consultora);
+                    post(new UpdateList());
+                } catch (Exception ignore) {
+                    ignore.printStackTrace();
                 }
-                consultora.setId(result[0]);
-                consultora.setNome(result[1]);
-                if (consultora.getDateCheckin() == null) {
-                    consultora.setDateCheckin(Calendar.getInstance().getTime());
-                } else {
-                    consultora.setDateCheckout(Calendar.getInstance().getTime());
-                }
-                consultoraDao.salvar(consultora);
-                post(new UpdateList());
                 break;
         }
     }
