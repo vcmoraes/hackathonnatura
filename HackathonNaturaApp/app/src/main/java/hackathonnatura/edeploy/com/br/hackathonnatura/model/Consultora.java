@@ -26,6 +26,10 @@ public class Consultora implements Entidade {
 
     @Override
     public String getId() {
+        if (TextUtils.isEmpty(id)) {
+            anonimo = true;
+            id = getUuid();
+        }
         return TextUtils.isEmpty(id) ? "" : id.trim();
     }
 

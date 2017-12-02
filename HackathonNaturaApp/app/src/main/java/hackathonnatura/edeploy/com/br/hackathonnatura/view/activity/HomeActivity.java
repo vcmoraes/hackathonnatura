@@ -37,6 +37,8 @@ public class HomeActivity extends BaseActivity {
 
     private ConsultoraDao consultoraDao;
 
+    private boolean updateList;
+
     @AfterViews
     public void init() {
         consultoraDao = new ConsultoraDao(this);
@@ -68,6 +70,15 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (updateList) {
+            updateList = false;
+            post(new UpdateList());
+        }
+    }
+
     @Click(R.id.button_add)
     void onButtonAdd() {
         BarcodeActivity_.intent(this).startForResult(Constants.REQUEST_BARCODE);
@@ -92,7 +103,7 @@ public class HomeActivity extends BaseActivity {
                         consultora.setDateCheckout(Calendar.getInstance().getTime());
                     }
                     consultoraDao.salvar(consultora);
-                    post(new UpdateList());
+                    updateList = true;
                 } catch (Exception ignore) {
                     ignore.printStackTrace();
                 }
