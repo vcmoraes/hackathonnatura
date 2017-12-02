@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
@@ -51,6 +52,11 @@ public class Util {
     private static final float XXHDPI = 3.0f;
     private static final float DPI560 = 3.5f;
     private static final float XXXHDPI = 4.0f;
+
+    public static Bitmap loadBitmap(int resource, Resources resources) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        return BitmapFactory.decodeStream(resources.openRawResource(resource), null, options);
+    }
 
     public static Float convertDpToPixel(float dp) {
         DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
