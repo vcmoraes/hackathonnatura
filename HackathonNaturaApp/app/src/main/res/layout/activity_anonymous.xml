@@ -38,8 +38,11 @@
     
     <Button
         android:id="@+id/register"
-        android:layout_width="200dip"
-        android:layout_height="50dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="@string/register"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
         android:layout_gravity="center_vertical|center"/>
 </LinearLayout>

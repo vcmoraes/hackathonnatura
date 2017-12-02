@@ -7,6 +7,18 @@
         android:id="@+id/image_mock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY" />
+        android:layout_above="@+id/btn_login"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_mock" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/NaturaButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/button_orange"
+        android:text="@string/entrar"
+        android:textColor="@color/colorGrayDark" />
 
 </RelativeLayout>

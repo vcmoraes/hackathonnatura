@@ -2,6 +2,9 @@
     <string name="app_name">Hackathon Natura</string>
     <string name="aviso_qrcode">É preciso permissão da câmera para leitura do QRCODE</string>
     <string name="ler_qrcode">LER QRCODE</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="registrados">REGISTRADOS</string>
+    <string name="anonimos">ANÔNIMOS</string>
     <string name="anonymous_screen_title">Registrar \n participante Anônimo</string>
     <string name="name">Nome</string>
     <string name="phone_number">Telefone</string>
