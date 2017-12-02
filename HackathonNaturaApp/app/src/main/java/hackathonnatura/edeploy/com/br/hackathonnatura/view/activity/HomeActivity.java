@@ -1,11 +1,14 @@
 package hackathonnatura.edeploy.com.br.hackathonnatura.view.activity;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
+import org.androidannotations.annotations.ViewById;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
@@ -16,9 +19,34 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends BaseActivity {
 
+    @ViewById
+    TabLayout tabLayout;
+
+    @ViewById
+    ViewPager viewPager;
+
     @AfterViews
     public void init() {
-        //TODO: INIT
+        tabLayout.addTab(tabLayout.newTab().setText("REGISTRADOS"));
+        tabLayout.addTab(tabLayout.newTab().setText("ANÔNIMOS"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab LayoutTab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab LayoutTab) {
+
+            }
+        });
     }
 
     @Click(R.id.btn_qrcode)
