@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
@@ -60,10 +61,10 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
-//    @Click(R.id.btn_qrcode)
-//    void onLogin() {
-//        BarcodeActivity_.intent(this).startForResult(Constants.REQUEST_BARCODE);
-//    }
+    @Click(R.id.button_add)
+    void onButtonAdd() {
+        BarcodeActivity_.intent(this).startForResult(Constants.REQUEST_BARCODE);
+    }
 
     @OnActivityResult(Constants.REQUEST_BARCODE)
     void onResultBarcode(int resultCode, Intent data) {
