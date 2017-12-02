@@ -11,10 +11,14 @@ import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.adapter.PagerAdapterFragment;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.CustomViewPager;
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
+import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.AnonimosFragment_;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.RegistradosFragment_;
@@ -31,8 +35,11 @@ public class HomeActivity extends BaseActivity {
     @ViewById
     CustomViewPager viewPager;
 
+    private ConsultoraDao consultoraDao;
+
     @AfterViews
     public void init() {
+        consultoraDao = new ConsultoraDao(this);
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getText(R.string.registrados)));
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getText(R.string.anonimos)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -71,6 +78,20 @@ public class HomeActivity extends BaseActivity {
         switch (resultCode) {
             case RESULT_OK:
                 String contentBarcode = data.getStringExtra(Constants.CONTENT_BARCODE);
+                String result[] = contentBarcode.split(";");
+                Consultora consultora = consultoraDao.recuperarPorID(result[0]);
+                if (consultora == null) {
+                    consultora = new Consultora();
+                }
+                consultora.setId(result[0]);
+                consultora.setNome(result[1]);
+                if (consultora.getDateCheckin() == null) {
+                    consultora.setDateCheckin(Calendar.getInstance().getTime());
+                } else {
+                    consultora.setDateCheckout(Calendar.getInstance().getTime());
+                }
+                consultoraDao.salvar(consultora);
+                post(new UpdateList());
                 break;
         }
     }

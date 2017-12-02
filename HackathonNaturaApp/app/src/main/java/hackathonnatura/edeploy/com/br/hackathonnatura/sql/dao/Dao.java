@@ -115,8 +115,8 @@ public abstract class Dao<T extends Entidade> {
         return recuperarPorQuery(queryReturnAll);
     }
 
-    public T recuperarPorID(int id) {
-        String queryOne = "SELECT * FROM " + getNomeTabela() + " where " + getNomeColunaPrimaryKey() + " = '" + String.valueOf(id) + "'";
+    public T recuperarPorID(String id) {
+        String queryOne = "SELECT * FROM " + getNomeTabela() + " where " + getNomeColunaPrimaryKey() + " = '" + id + "'";
         List<T> result = recuperarPorQuery(queryOne);
         if (result.isEmpty()) {
             return null;
