@@ -19,7 +19,7 @@
             app:tabSelectedTextColor="@android:color/black"
             app:tabTextColor="@android:color/darker_gray" />
 
-        <android.support.v4.view.ViewPager
+        <hackathonnatura.edeploy.com.br.hackathonnatura.custom.CustomViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -2,7 +2,7 @@ package hackathonnatura.edeploy.com.br.hackathonnatura.view.activity;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -10,8 +10,14 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
+
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
+import hackathonnatura.edeploy.com.br.hackathonnatura.adapter.PagerAdapterFragment;
+import hackathonnatura.edeploy.com.br.hackathonnatura.custom.CustomViewPager;
 import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
+import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.AnonimosFragment_;
+import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.RegistradosFragment_;
 
 /**
  * Created by vcmoraes on 02/12/17.
@@ -23,13 +29,19 @@ public class HomeActivity extends BaseActivity {
     TabLayout tabLayout;
 
     @ViewById
-    ViewPager viewPager;
+    CustomViewPager viewPager;
 
     @AfterViews
     public void init() {
         tabLayout.addTab(tabLayout.newTab().setText("REGISTRADOS"));
         tabLayout.addTab(tabLayout.newTab().setText("ANÔNIMOS"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        ArrayList<Fragment> listFragment = new ArrayList<>();
+        listFragment.add(RegistradosFragment_.builder().build());
+        listFragment.add(AnonimosFragment_.builder().build());
+
+        viewPager.setAdapter(new PagerAdapterFragment(getSupportFragmentManager(), listFragment));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
