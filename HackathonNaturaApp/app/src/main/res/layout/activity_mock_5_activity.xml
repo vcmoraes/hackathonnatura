@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_qrcode"
+    <ImageView
+        android:id="@+id/image_mock"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/ler_qrcode" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
 
 </RelativeLayout>

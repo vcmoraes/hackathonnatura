@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="@string/anonymous_screen_title"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_gravity="center_vertical|center"/>
+
+    <ImageView
+        android:id="@+id/image_anonymous_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/anonynous_user"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_vertical|center"/>
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="250dip"
+        android:layout_height="40dip"
+        android:hint="@string/name"
+        android:layout_gravity="center_vertical|center"/>
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="250dip"
+        android:layout_height="40dip"
+        android:hint="@string/phone_number"
+        android:layout_gravity="center_vertical|center"/>
+    
+    <Button
+        android:id="@+id/register"
+        android:layout_width="200dip"
+        android:layout_height="50dip"
+        android:text="@string/register"
+        android:layout_gravity="center_vertical|center"/>
+</LinearLayout>
