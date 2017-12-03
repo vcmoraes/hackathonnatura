@@ -17,10 +17,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="20dp"
                 android:text="Lista de Presença"
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/btn_sicronizar"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_button"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Sicronizar"
+                android:textColor="@android:color/white" />
 
         </FrameLayout>
 
@@ -46,18 +59,12 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_sicronizar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="20dp"
-        android:text="Sicronizar" />
-
     <FrameLayout
         android:id="@+id/progress_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackgroundTransp"
+        android:onClick="onClick"
         android:visibility="gone">
 
         <ProgressBar

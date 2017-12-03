@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <FrameLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -21,67 +22,75 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_below="@+id/top"
         android:background="@android:color/darker_gray" />
 
-
-    <TextView
-        android:id="@+id/textView_screen_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textColor="@color/colorPrimary"
-        android:text="@string/anonimo_titulo"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:layout_gravity="center_vertical|center"/>
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/image_anonymous_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/anonynous_user"
-        android:scaleType="fitXY"
-        android:layout_gravity="center_vertical|center"/>
+        <TextView
+            android:id="@+id/textView_screen_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginTop="40dp"
+            android:text="@string/anonimo_titulo"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="23sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/edit_text_name"
-        android:layout_width="220dip"
-        android:layout_height="40dip"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
-        android:hint="@string/name"
-        android:background="@drawable/round_edit_text"
-        android:layout_gravity="center_vertical|center"
-        android:imeOptions="actionNext"
-        android:maxLines="1"
-        android:ems="10">
-        <requestFocus />
-    </EditText>
+        <ImageView
+            android:id="@+id/image_anonymous_user"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginTop="40dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/pessoa_01" />
 
-    <EditText
-        android:id="@+id/edit_text_phone_number"
-        android:layout_width="220dip"
-        android:layout_height="40dip"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
-        android:hint="@string/telefone"
-        android:background="@drawable/round_edit_text"
-        android:layout_gravity="center_vertical|center"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:ems="10"/>
+        <EditText
+            android:id="@+id/edit_text_name"
+            android:layout_width="220dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:hint="@string/name"
+            android:background="@drawable/round_edit_text"
+            android:layout_gravity="center_vertical|center"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:ems="10">
+            <requestFocus />
+        </EditText>
 
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="@string/registrar"
-        android:textColor="@android:color/white"
-        android:background="@drawable/round_button"
-        android:layout_gravity="center_vertical|center"/>
-</LinearLayout>
+        <EditText
+            android:id="@+id/edit_text_phone_number"
+            android:layout_width="220dip"
+            android:layout_height="40dip"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:hint="@string/telefone"
+            android:background="@drawable/round_edit_text"
+            android:layout_gravity="center_vertical|center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:ems="10"/>
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical|center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_button"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="@string/registrar"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</RelativeLayout>
