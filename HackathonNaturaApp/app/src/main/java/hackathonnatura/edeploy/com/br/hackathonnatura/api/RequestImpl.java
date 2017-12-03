@@ -6,6 +6,10 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.util.ArrayList;
+
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
+
 /**
  * Created by sergio on 02/12/17.
  */
@@ -18,4 +22,9 @@ class RequestImpl implements Request {
 
     @Bean
     ApiRetrofit apiRetrofit;
+
+    @Override
+    public void atualizaListaServidor(ArrayList<Consultora> lisUpdate) {
+
+    }
 }
