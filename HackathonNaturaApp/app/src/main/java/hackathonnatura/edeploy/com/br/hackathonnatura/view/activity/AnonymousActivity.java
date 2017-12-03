@@ -12,12 +12,19 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
 
+import android.widget.EditText;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.Calendar;
+
+import hackathonnatura.edeploy.com.br.hackathonnatura.R;
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
+import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 
 @EActivity(R.layout.activity_anonymous)
 public class AnonymousActivity extends BaseActivity {
