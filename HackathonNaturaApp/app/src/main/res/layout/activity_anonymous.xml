@@ -4,11 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/registrar_anonimo"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray" />
+
+
     <TextView
         android:id="@+id/textView_screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:textColor="@color/colorPrimary"
         android:text="@string/anonimo_titulo"
         android:textStyle="bold"
@@ -30,7 +50,9 @@
         android:layout_width="220dip"
         android:layout_height="40dip"
         android:layout_marginTop="10dp"
+        android:padding="5dp"
         android:hint="@string/name"
+        android:background="@drawable/round_edit_text"
         android:layout_gravity="center_vertical|center"/>
 
     <EditText
@@ -38,7 +60,9 @@
         android:layout_width="220dip"
         android:layout_height="40dip"
         android:layout_marginTop="10dp"
+        android:padding="5dp"
         android:hint="@string/telefone"
+        android:background="@drawable/round_edit_text"
         android:layout_gravity="center_vertical|center"/>
 
     <Button
