@@ -140,6 +140,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         }
     }
 
+    @Click(R.id.lista_presenca)
+    void onListaPresenca() {
+        consultoraDao.deletarTodos();
+        tabLayout.getTabAt(0).select();
+        post(new UpdateList());
+    }
+
     @Click(R.id.btn_sicronizar)
     void onButtonSicronizar() {
         enviarDados();

@@ -40,8 +40,8 @@ class RequestImpl implements Request {
 
     @Override
     public void atualizaListaServidor(final ResponseListerner responseListerner) {
-        ConsultoraDao consultoraDao = new ConsultoraDao(context);
-        List<Consultora> consultoras = consultoraDao.recuperarTodos();
+        final ConsultoraDao consultoraDao = new ConsultoraDao(context);
+        final List<Consultora> consultoras = consultoraDao.recuperaPorParametro(ConsultoraDao.COLUNA_SERVER, "0");
         ArrayList<Participante> participantes = new ArrayList<>();
         @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         for (Consultora consultora : consultoras) {
@@ -72,6 +72,10 @@ class RequestImpl implements Request {
 
             @Override
             public void onNext(Object value) {
+                for (Consultora consultora : consultoras) {
+                    consultora.setServer(true);
+                }
+                consultoraDao.salvar(consultoras);
                 responseListerner.success();
             }
 

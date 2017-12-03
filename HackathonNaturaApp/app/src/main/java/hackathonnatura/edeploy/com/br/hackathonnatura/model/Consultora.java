@@ -20,6 +20,7 @@ public class Consultora implements Entidade {
     private String nome;
     private String telefone;
     private boolean anonimo;
+    private boolean server;
 
     private Date dateCheckin;
     private Date dateCheckout;
@@ -97,5 +98,17 @@ public class Consultora implements Entidade {
 
     public void setDateCheckout(Date dateCheckout) {
         this.dateCheckout = dateCheckout;
+    }
+
+    public boolean isServer() {
+        return server;
+    }
+
+    public void setServer(boolean server) {
+        this.server = server;
+    }
+
+    public void setServer(Integer server) {
+        this.server = !(server == null || server == 0);
     }
 }
