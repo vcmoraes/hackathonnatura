@@ -2,6 +2,8 @@ package hackathonnatura.edeploy.com.br.hackathonnatura.adapter.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
@@ -15,12 +17,14 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 public class ConsultoraRegistradaViewHolder extends ViewHolderBind<Consultora> {
 
     private TextView siglaNome, nome, codigoConsultora;
+    private ImageView checkbox;
 
     public ConsultoraRegistradaViewHolder(RecyclerView parent) {
         super(parent, R.layout.item_list_consultora_registrada);
         siglaNome = itemView.findViewById(R.id.sigla_nome);
         nome = itemView.findViewById(R.id.nome);
         codigoConsultora = itemView.findViewById(R.id.codigo_consultora);
+        checkbox = itemView.findViewById(R.id.checkbox);
     }
 
     @Override
@@ -28,6 +32,7 @@ public class ConsultoraRegistradaViewHolder extends ViewHolderBind<Consultora> {
         siglaNome.setText(getSiglasNome(model.getNome()));
         nome.setText(model.getNome());
         codigoConsultora.setText(String.format("Código: %s", model.getId()));
+        checkbox.setVisibility(model.isServer() ? View.VISIBLE : View.GONE);
     }
 
     private String getSiglasNome(String nome) {
