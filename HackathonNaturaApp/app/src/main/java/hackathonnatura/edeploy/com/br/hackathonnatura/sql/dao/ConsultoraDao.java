@@ -15,7 +15,7 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 public class ConsultoraDao extends Dao<Consultora> {
 
     public static final String NOME_TABELA = "CONSULTORA";
-    public static final String SCRIPT_CRIACAO_TABELA = "CREATE TABLE IF NOT EXISTS DIAS_SORTEIO(id TEXT PRIMARY KEY, uuid TEXT, nome TEXT, telefone TEXT, anonimo INTEGER, date_in BLOB, date_out BLOB)";
+    public static final String SCRIPT_CRIACAO_TABELA = "CREATE TABLE IF NOT EXISTS CONSULTORA(id TEXT PRIMARY KEY, uuid TEXT, nome TEXT, telefone TEXT, anonimo INTEGER, date_in BLOB, date_out BLOB)";
     public static final String SCRIPT_DELECAO_TABELA = "DROP TABLE IF EXISTS " + NOME_TABELA;
 
     public static final String COLUNA_ID = "id";

@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
@@ -15,9 +15,11 @@ import java.util.Calendar;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.adapter.PagerAdapterFragment;
+import hackathonnatura.edeploy.com.br.hackathonnatura.contract.HomeContract;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.CustomViewPager;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
+import hackathonnatura.edeploy.com.br.hackathonnatura.presenter.HomePresenter;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.AnonimosFragment_;
@@ -27,7 +29,10 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.RegistradosF
  * Created by vcmoraes on 02/12/17.
  */
 @EActivity(R.layout.activity_home)
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements HomeContract.IHomeView {
+
+    @Bean
+    HomePresenter presenter;
 
     @ViewById
     TabLayout tabLayout;
@@ -37,8 +42,11 @@ public class HomeActivity extends BaseActivity {
 
     private ConsultoraDao consultoraDao;
 
+    private boolean updateList;
+
     @AfterViews
     public void init() {
+        presenter.setView(this);
         consultoraDao = new ConsultoraDao(this);
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getText(R.string.registrados)));
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getText(R.string.anonimos)));
@@ -68,31 +76,49 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
-    @Click(R.id.button_add)
-    void onButtonAdd() {
-        BarcodeActivity_.intent(this).startForResult(Constants.REQUEST_BARCODE);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (updateList) {
+            updateList = false;
+            post(new UpdateList());
+        }
     }
 
     @OnActivityResult(Constants.REQUEST_BARCODE)
     void onResultBarcode(int resultCode, Intent data) {
         switch (resultCode) {
             case RESULT_OK:
-                String contentBarcode = data.getStringExtra(Constants.CONTENT_BARCODE);
-                String result[] = contentBarcode.split(";");
-                Consultora consultora = consultoraDao.recuperarPorID(result[0]);
-                if (consultora == null) {
-                    consultora = new Consultora();
+                try {
+                    String contentBarcode = data.getStringExtra(Constants.CONTENT_BARCODE);
+                    String result[] = contentBarcode.split(";");
+                    Consultora consultora = consultoraDao.recuperarPorID(result[0]);
+                    if (consultora == null) {
+                        consultora = new Consultora();
+                    }
+                    consultora.setId(result[0]);
+                    consultora.setNome(result[1]);
+                    if (consultora.getDateCheckin() == null) {
+                        consultora.setDateCheckin(Calendar.getInstance().getTime());
+                    } else {
+                        consultora.setDateCheckout(Calendar.getInstance().getTime());
+                    }
+                    consultoraDao.salvar(consultora);
+                    updateList = true;
+                } catch (Exception ignore) {
+                    ignore.printStackTrace();
                 }
-                consultora.setId(result[0]);
-                consultora.setNome(result[1]);
-                if (consultora.getDateCheckin() == null) {
-                    consultora.setDateCheckin(Calendar.getInstance().getTime());
-                } else {
-                    consultora.setDateCheckout(Calendar.getInstance().getTime());
-                }
-                consultoraDao.salvar(consultora);
-                post(new UpdateList());
                 break;
         }
+    }
+
+    @Override
+    public void onSucess() {
+
+    }
+
+    @Override
+    public void onError(String men) {
+
     }
 }

@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:background="@android:color/black"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:padding="20dp">
 
-</RelativeLayout>
+    <FrameLayout
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/circle">
+
+        <TextView
+            android:id="@+id/sigla_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:text="VM" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17sp"
+            tools:text="Victor Moraes" />
+
+        <TextView
+            android:id="@+id/telefone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            tools:text="(62) 98142-9749" />
+
+    </LinearLayout>
+
+</LinearLayout>
