@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Participante;
@@ -12,7 +13,7 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.model.Participante;
  * Created by vcmoraes on 03/12/17.
  */
 
-public class UpdateRequest {
+public class UpdateRequest implements Serializable {
 
     @SerializedName("event_id")
     private int eventoID;

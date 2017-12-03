@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
@@ -125,6 +126,11 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
                 }
                 break;
         }
+    }
+
+    @Click(R.id.btn_sicronizar)
+    void onButtonSicronizar() {
+        enviarDados();
     }
 
     private void enviarDados() {

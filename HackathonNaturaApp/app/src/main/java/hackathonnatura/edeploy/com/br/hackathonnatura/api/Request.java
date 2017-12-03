@@ -8,5 +8,4 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.listerner.ResponseListerne
 
 public interface Request {
     void atualizaListaServidor(ResponseListerner responseListerner);
-
 }
