@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -146,10 +147,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     @Override
     public void onSucess() {
         progressContainer.setVisibility(View.GONE);
+        Toast.makeText(this, "Dados Atualizados com sucesso!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onError(String men) {
         progressContainer.setVisibility(View.GONE);
+        Toast.makeText(this, "Verifique sua conexão e tente novamente!", Toast.LENGTH_SHORT).show();
     }
+
 }

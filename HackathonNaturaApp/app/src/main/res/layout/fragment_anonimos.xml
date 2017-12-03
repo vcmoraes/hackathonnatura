@@ -28,12 +28,11 @@
 
         <Button
             android:id="@+id/btn_registrar_anonimo"
-            style="@style/NaturaButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
-            android:background="@color/button_orange"
+            android:background="@drawable/round_button"
             android:text="@string/registrar_an_nimo"
             android:textColor="@android:color/white" />
 
