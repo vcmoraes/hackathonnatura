@@ -7,15 +7,18 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Calendar;
+
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.Mask;
 import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
+import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
 
 @EActivity(R.layout.activity_anonymous)
 public class AnonymousActivity extends BaseActivity {
-
 
     @ViewById
     EditText editTextName;
@@ -45,20 +48,22 @@ public class AnonymousActivity extends BaseActivity {
     void onButtonRegister() {
 
         if (!this.validate()) {
-            showMessage("É necessário informar o nome da CN.", null, DialogType.ERROR);
-
+            showMessage(getString(R.string.nome_cn_vazio), null, DialogType.ERROR);
             return;
         }
 
-//        Consultora consultora = new Consultora();
-//        consultora.setId("");
-//        consultora.setNome(editTextName.getText().toString());
-//        consultora.setTelefone(editTextPhoneNumber.getText().toString());
-//        consultora.setDateCheckin(Calendar.getInstance().getTime());
-//        consultoraDao.salvar(consultora);
-//        post(new UpdateList());
+        Consultora consultora = new Consultora();
 
-        showMessage(editTextName.getText().toString(), "9999", DialogType.SUCCESS);
+        String uuid = consultora.getUuid();
+
+        consultora.setId(uuid);
+        consultora.setNome(editTextName.getText().toString());
+        consultora.setTelefone(editTextPhoneNumber.getText().toString());
+        consultora.setDateCheckin(Calendar.getInstance().getTime());
+        consultoraDao.salvar(consultora);
+        post(new UpdateList());
+
+        showMessage(editTextName.getText().toString(), uuid, DialogType.SUCCESS);
     }
 
     void showMessage(String message, String code, DialogType dialogType) {
