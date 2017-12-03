@@ -14,9 +14,6 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.custom.Mask;
 import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
-import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
-
-import static hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants.RESULT_ANONYMOUS;
 
 @EActivity(R.layout.activity_anonymous)
 public class AnonymousActivity extends BaseActivity {
@@ -49,7 +46,7 @@ public class AnonymousActivity extends BaseActivity {
     void onButtonRegister() {
 
         if (!this.validate()) {
-            showMessage(getString(R.string.nome_cn_vazio), null, DialogType.ERROR);
+            showMessage(getString(R.string.nome_cn_vazio), null, DialogType.ERROR, false);
             return;
         }
 
@@ -60,24 +57,6 @@ public class AnonymousActivity extends BaseActivity {
         consultora.setDateCheckin(Calendar.getInstance().getTime());
         consultoraDao.salvar(consultora);
 
-        showMessage(editTextName.getText().toString(), consultora.getUuid(), DialogType.SUCCESS);
-    }
-
-    void showMessage(String message, String code, DialogType dialogType) {
-        NaturaDialogFragment naturaDialog = new NaturaDialogFragment();
-        if (dialogType == DialogType.SUCCESS) {
-            naturaDialog.setCnCode(this, code);
-            naturaDialog.setCnName(this, message);
-        } else {
-            naturaDialog.setMessage(this, message, dialogType);
-        }
-        naturaDialog.setClickListener(new NaturaDialogFragment.ClickListener() {
-            @Override
-            public void onClick() {
-                setResult(RESULT_ANONYMOUS);
-                finish();
-            }
-        });
-        naturaDialog.show(this.getFragmentManager(), "");
+        showMessage(editTextName.getText().toString(), consultora.getUuid(), DialogType.SUCCESS, true);
     }
 }

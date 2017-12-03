@@ -21,6 +21,7 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.adapter.PagerAdapterFragment;
 import hackathonnatura.edeploy.com.br.hackathonnatura.contract.HomeContract;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.CustomViewPager;
+import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
 import hackathonnatura.edeploy.com.br.hackathonnatura.presenter.HomePresenter;
@@ -119,6 +120,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
                     }
                     consultoraDao.salvar(consultora);
                     updateList = true;
+                    showMessage(result[1], consultora.getUuid(), DialogType.SUCCESS, false);
                 } catch (Exception ignore) {
                     ignore.printStackTrace();
                 }
