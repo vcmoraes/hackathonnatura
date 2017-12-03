@@ -27,7 +27,7 @@ public class ConsultoraRegistradaViewHolder extends ViewHolderBind<Consultora> {
     public void onBindViewHolder(Consultora model, int position) {
         siglaNome.setText(getSiglasNome(model.getNome()));
         nome.setText(model.getNome());
-        codigoConsultora.setText(model.getId());
+        codigoConsultora.setText(String.format("Código: %s", model.getId()));
     }
 
     private String getSiglasNome(String nome) {
