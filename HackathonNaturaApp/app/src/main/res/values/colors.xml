@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="button_orange">#f5a739</color>
     <color name="colorGrayDark">#3f3f3f</color>
+    <color name="colorGrayLight">#a0a0a0</color>
 </resources>
