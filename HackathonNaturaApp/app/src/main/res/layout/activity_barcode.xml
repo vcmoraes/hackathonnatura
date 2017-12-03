@@ -18,4 +18,17 @@
         android:layout_centerInParent="true"
         android:src="@drawable/retangulo_qrcode" />
 
+    <Button
+        android:id="@+id/button_anonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/anonimo"
+        android:textColor="@android:color/white"
+        android:background="@drawable/round_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

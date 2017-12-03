@@ -11,6 +11,7 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -71,6 +72,11 @@ public class BarcodeActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return barcodeScanner.onKeyDown(keyCode, event) || super.onKeyDown(keyCode, event);
+    }
+
+    @Click(R.id.button_anonymous)
+    void onButtonAnonymous() {
+        AnonymousActivity_.intent(this).startForResult(Constants.REQUEST_ANONYMOUS);
     }
 
     @Override

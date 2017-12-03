@@ -5,8 +5,9 @@
     <string name="entrar">ENTRAR</string>
     <string name="registrados">REGISTRADOS</string>
     <string name="anonimos">ANÔNIMOS</string>
-    <string name="anonymous_screen_title">Registrar \n participante Anônimo</string>
+    <string name="anonimo_titulo">Registrar \n participante Anônimo</string>
     <string name="name">Nome</string>
-    <string name="phone_number">Telefone</string>
-    <string name="register">Registrar</string>
+    <string name="telefone">Telefone</string>
+    <string name="registrar">REGISTRAR</string>
+    <string name="anonimo">ANÔNIMO</string>
 </resources>
