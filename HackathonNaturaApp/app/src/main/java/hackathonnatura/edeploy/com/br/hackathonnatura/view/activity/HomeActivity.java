@@ -112,6 +112,21 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         }
     }
 
+    @OnActivityResult(Constants.REQUEST_ANONYMOUS)
+    void onResultAnonymous(int resultCode, Intent data) {
+        switch (resultCode) {
+            case RESULT_OK:
+                try {
+                    String teste;
+                    teste = "";
+                    updateList = true;
+                } catch (Exception ignore) {
+                    ignore.printStackTrace();
+                }
+                break;
+        }
+    }
+
     @Override
     public void onSucess() {
 

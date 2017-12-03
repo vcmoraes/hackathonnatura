@@ -29,6 +29,5 @@ class RequestImpl implements Request {
     public void atualizaListaServidor(ArrayList<Consultora> lisUpdate) {
         ConsultoraDao consultoraDao = new ConsultoraDao(context);
         List<Consultora> consultoras = consultoraDao.recuperarTodos();
-
     }
 }

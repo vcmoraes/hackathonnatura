@@ -13,4 +13,7 @@
     <string name="phone_number">Telefone</string>
     <string name="register">Registrar</string>
     <string name="aviso_lista">SUA LISTA DE PRESENÇA\nESTÁ VAZIA</string>
+    <string name="aviso_lista_anonimos">SUA LISTA DE ANÔNIMOS\nESTÁ VAZIA</string>
+    <string name="registrar_an_nimo">REGISTRAR ANÔNIMO</string>
+    <string name="registrar_presen_a">REGISTRAR PRESENÇA</string>
 </resources>

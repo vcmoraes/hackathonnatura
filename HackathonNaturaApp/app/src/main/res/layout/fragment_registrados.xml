@@ -34,7 +34,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
             android:background="@color/button_orange"
-            android:text="REGISTRAR PRESENÇA"
+            android:text="@string/registrar_presen_a"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
