@@ -24,7 +24,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.HttpException;
-import retrofit2.Response;
 
 /**
  * Created by sergio on 02/12/17.
@@ -47,7 +46,9 @@ class RequestImpl implements Request {
         @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         for (Consultora consultora : consultoras) {
             Participante participante = new Participante();
-            participante.setCnCode(consultora.getId());
+            if (!consultora.isAnonimo()) {
+                participante.setCnCode(consultora.getId());
+            }
             participante.setName(consultora.getNome());
             participante.setPhoneNumber(consultora.getTelefone());
             participante.setUserId("");
@@ -63,14 +64,14 @@ class RequestImpl implements Request {
         UpdateRequest updateRequest = new UpdateRequest();
         updateRequest.setEventoID(1234);
         updateRequest.setParticipantes(participantes);
-        apiRetrofit.getAPI().postUpdateUsers(updateRequest).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<Response>() {
+        apiRetrofit.getAPI().postUpdateUsers(updateRequest).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<Object>() {
             @Override
             public void onSubscribe(Disposable d) {
 
             }
 
             @Override
-            public void onNext(Response value) {
+            public void onNext(Object value) {
                 responseListerner.success();
             }
 

@@ -2,7 +2,6 @@ package hackathonnatura.edeploy.com.br.hackathonnatura.api;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.request.UpdateRequest;
 import io.reactivex.Observable;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
@@ -13,5 +12,5 @@ import retrofit2.http.POST;
 interface RequestRetrofit {
 
     @POST("events")
-    Observable<Response> postUpdateUsers(@Body UpdateRequest updateRequest);
+    Observable<Object> postUpdateUsers(@Body UpdateRequest updateRequest);
 }

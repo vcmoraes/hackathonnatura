@@ -3,6 +3,8 @@ package hackathonnatura.edeploy.com.br.hackathonnatura.view.activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -40,6 +42,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     @ViewById
     CustomViewPager viewPager;
+
+    @ViewById
+    FrameLayout progressContainer;
 
     private ConsultoraDao consultoraDao;
 
@@ -134,16 +139,17 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     }
 
     private void enviarDados() {
+        progressContainer.setVisibility(View.VISIBLE);
         presenter.atualizaListaServidor();
     }
 
     @Override
     public void onSucess() {
-
+        progressContainer.setVisibility(View.GONE);
     }
 
     @Override
     public void onError(String men) {
-
+        progressContainer.setVisibility(View.GONE);
     }
 }
