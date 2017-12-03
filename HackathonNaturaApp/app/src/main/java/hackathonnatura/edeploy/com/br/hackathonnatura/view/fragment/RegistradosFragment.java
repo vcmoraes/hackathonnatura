@@ -1,8 +1,12 @@
 package hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
@@ -16,6 +20,8 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.adapter.viewholder.Consult
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
+import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
+import hackathonnatura.edeploy.com.br.hackathonnatura.view.activity.BarcodeActivity_;
 
 /**
  * Created by vcmoraes on 02/12/17.
@@ -25,6 +31,12 @@ public class RegistradosFragment extends BaseSubscriberFragment {
 
     @ViewById
     RecyclerView recyclerView;
+
+    @ViewById
+    LinearLayout llRegistrarPresenca;
+
+    @ViewById
+    FloatingActionButton buttonAdd;
 
     private ArrayList<Consultora> listOptions = new ArrayList<>();
     private RecyclerViewAdapter<Consultora> adapter = new RecyclerViewAdapter<>(ConsultoraRegistradaViewHolder.class, listOptions);
@@ -41,11 +53,24 @@ public class RegistradosFragment extends BaseSubscriberFragment {
     private void updateList() {
         listOptions.clear();
         listOptions.addAll(consultoraDao.recuperaPorParametro(ConsultoraDao.COLUNA_ANONIMO, "0"));
+        llRegistrarPresenca.setVisibility(listOptions.isEmpty() ? View.VISIBLE : View.GONE);
+        buttonAdd.setVisibility(listOptions.isEmpty() ? View.GONE : View.VISIBLE);
+        recyclerView.setVisibility(listOptions.isEmpty() ? View.GONE : View.VISIBLE);
         adapter.notifyDataSetChanged();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onUpdateList(UpdateList updateList) {
         updateList();
+    }
+
+    @Click(R.id.button_add)
+    void onButtonAdd() {
+        BarcodeActivity_.intent(getActivity()).startForResult(Constants.REQUEST_BARCODE);
+    }
+
+    @Click(R.id.btn_registrar_presenca)
+    void onButtonRegistrarPresenca() {
+        BarcodeActivity_.intent(getActivity()).startForResult(Constants.REQUEST_BARCODE);
     }
 }
