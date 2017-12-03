@@ -70,6 +70,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/round_edit_text"
             android:hint="@string/telefone"
+            android:inputType="number"
             android:padding="5dp" />
 
         <Button

@@ -1,17 +1,5 @@
 package hackathonnatura.edeploy.com.br.hackathonnatura.view.activity;
 
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.widget.EditText;
-
-import hackathonnatura.edeploy.com.br.hackathonnatura.R;
-import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
-import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
-import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
-import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
-import hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants;
-import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
-
 import android.widget.EditText;
 
 import org.androidannotations.annotations.AfterViews;
@@ -19,12 +7,11 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.Calendar;
-
 import hackathonnatura.edeploy.com.br.hackathonnatura.R;
-import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
-import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
+import hackathonnatura.edeploy.com.br.hackathonnatura.custom.Mask;
+import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
+import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
 
 @EActivity(R.layout.activity_anonymous)
 public class AnonymousActivity extends BaseActivity {
@@ -41,6 +28,7 @@ public class AnonymousActivity extends BaseActivity {
     @AfterViews
     public void init() {
         consultoraDao = new ConsultoraDao(this);
+        editTextPhoneNumber.addTextChangedListener(Mask.insert(Mask.PHONE_MASK, editTextPhoneNumber));
     }
 
     private boolean validate() {
