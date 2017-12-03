@@ -23,6 +23,6 @@ public class Api {
     }
 
     public String getBaseUrl() {
-        return baseUrl;
+        return "http://ubuntugroup4.brazilsouth.cloudapp.azure.com:3000/";
     }
 }
