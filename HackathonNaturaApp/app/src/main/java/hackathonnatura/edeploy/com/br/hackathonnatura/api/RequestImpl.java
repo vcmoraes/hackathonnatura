@@ -7,8 +7,10 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
+import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 
 /**
  * Created by sergio on 02/12/17.
@@ -25,6 +27,8 @@ class RequestImpl implements Request {
 
     @Override
     public void atualizaListaServidor(ArrayList<Consultora> lisUpdate) {
+        ConsultoraDao consultoraDao = new ConsultoraDao(context);
+        List<Consultora> consultoras = consultoraDao.recuperarTodos();
 
     }
 }
