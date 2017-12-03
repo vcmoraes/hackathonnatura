@@ -10,6 +10,7 @@
     <string name="telefone">Telefone</string>
     <string name="registrar">REGISTRAR</string>
     <string name="anonimo">ANÔNIMO</string>
+    <string name="anonimo_hint">Anônimo</string>
     <string name="phone_number">Telefone</string>
     <string name="register">Registrar</string>
     <string name="aviso_lista">SUA LISTA DE PRESENÇA\nESTÁ VAZIA</string>

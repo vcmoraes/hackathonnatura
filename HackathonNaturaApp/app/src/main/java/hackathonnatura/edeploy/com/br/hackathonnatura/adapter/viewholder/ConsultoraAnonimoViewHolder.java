@@ -30,7 +30,7 @@ public class ConsultoraAnonimoViewHolder extends ViewHolderBind<Consultora> {
     @Override
     public void onBindViewHolder(Consultora model, int position) {
         siglaNome.setText(getSiglasNome(model.getNome()));
-        nome.setText(model.getNome());
+        nome.setText(TextUtils.isEmpty(model.getNome()) ? "Anônimo" : model.getNome());
         telefone.setText(model.getTelefone());
         checkbox.setVisibility(model.isServer() ? View.VISIBLE : View.GONE);
     }
@@ -44,7 +44,7 @@ public class ConsultoraAnonimoViewHolder extends ViewHolderBind<Consultora> {
                 return nome.substring(0, 1) + nomes[nomes.length - 1].substring(0, 1);
             }
         } else {
-            return "";
+            return "-";
         }
     }
 }

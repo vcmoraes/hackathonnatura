@@ -60,7 +60,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/round_edit_text"
             android:ems="10"
-            android:hint="@string/name"
+            android:hint="@string/anonimo_hint"
             android:maxLines="1"
             android:padding="5dp"
             android:singleLine="true">

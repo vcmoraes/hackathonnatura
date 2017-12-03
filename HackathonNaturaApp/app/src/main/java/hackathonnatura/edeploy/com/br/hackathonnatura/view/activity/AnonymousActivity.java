@@ -32,24 +32,8 @@ public class AnonymousActivity extends BaseActivity {
         editTextPhoneNumber.addTextChangedListener(Mask.insert(Mask.PHONE_MASK, editTextPhoneNumber));
     }
 
-    private boolean validate() {
-        boolean result = true;
-
-        if (editTextName.getText().toString().length() == 0) {
-            result = false;
-        }
-
-        return result;
-    }
-
     @Click(R.id.button_register)
     void onButtonRegister() {
-
-        if (!this.validate()) {
-            showMessage(getString(R.string.nome_cn_vazio), null, DialogType.ERROR, false);
-            return;
-        }
-
         Consultora consultora = new Consultora();
 
         consultora.setNome(editTextName.getText().toString());
