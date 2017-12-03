@@ -20,7 +20,7 @@ public class ConsultoraAnonimoViewHolder extends ViewHolderBind<Consultora> {
         super(parent, R.layout.item_list_consultora_anonimo);
         siglaNome = itemView.findViewById(R.id.sigla_nome);
         nome = itemView.findViewById(R.id.nome);
-        telefone = itemView.findViewById(R.id.codigo_consultora);
+        telefone = itemView.findViewById(R.id.telefone);
     }
 
     @Override
@@ -29,7 +29,6 @@ public class ConsultoraAnonimoViewHolder extends ViewHolderBind<Consultora> {
         nome.setText(model.getNome());
         telefone.setText(model.getTelefone());
     }
-
 
     private String getSiglasNome(String nome) {
         if (!TextUtils.isEmpty(nome)) {

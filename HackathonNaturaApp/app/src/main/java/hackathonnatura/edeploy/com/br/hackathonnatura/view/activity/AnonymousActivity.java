@@ -13,9 +13,10 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.Mask;
 import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
-import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
+
+import static hackathonnatura.edeploy.com.br.hackathonnatura.util.Constants.RESULT_ANONYMOUS;
 
 @EActivity(R.layout.activity_anonymous)
 public class AnonymousActivity extends BaseActivity {
@@ -54,21 +55,16 @@ public class AnonymousActivity extends BaseActivity {
 
         Consultora consultora = new Consultora();
 
-        String uuid = consultora.getUuid();
-
-        consultora.setId(uuid);
         consultora.setNome(editTextName.getText().toString());
         consultora.setTelefone(editTextPhoneNumber.getText().toString());
         consultora.setDateCheckin(Calendar.getInstance().getTime());
         consultoraDao.salvar(consultora);
-        post(new UpdateList());
 
-        showMessage(editTextName.getText().toString(), uuid, DialogType.SUCCESS);
+        showMessage(editTextName.getText().toString(), consultora.getUuid(), DialogType.SUCCESS);
     }
 
     void showMessage(String message, String code, DialogType dialogType) {
         NaturaDialogFragment naturaDialog = new NaturaDialogFragment();
-
         if (dialogType == DialogType.SUCCESS) {
             naturaDialog.setCnCode(this, code);
             naturaDialog.setCnName(this, message);
@@ -78,7 +74,8 @@ public class AnonymousActivity extends BaseActivity {
         naturaDialog.setClickListener(new NaturaDialogFragment.ClickListener() {
             @Override
             public void onClick() {
-
+                setResult(RESULT_ANONYMOUS);
+                finish();
             }
         });
         naturaDialog.show(this.getFragmentManager(), "");

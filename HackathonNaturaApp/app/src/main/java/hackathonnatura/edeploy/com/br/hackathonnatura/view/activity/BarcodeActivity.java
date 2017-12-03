@@ -13,6 +13,7 @@ import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
@@ -77,6 +78,16 @@ public class BarcodeActivity extends BaseActivity {
     @Click(R.id.button_anonymous)
     void onButtonAnonymous() {
         AnonymousActivity_.intent(this).startForResult(Constants.REQUEST_ANONYMOUS);
+    }
+
+    @OnActivityResult(Constants.REQUEST_ANONYMOUS)
+    void onResultAnonymous(int resultCode, Intent data) {
+        switch (resultCode) {
+            case Constants.RESULT_ANONYMOUS:
+                setResult(resultCode);
+                finish();
+                break;
+        }
     }
 
     @Override
