@@ -127,6 +127,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         }
     }
 
+    private void enviarDados() {
+        presenter.atualizaListaServidor();
+    }
+
     @Override
     public void onSucess() {
 

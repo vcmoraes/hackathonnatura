@@ -6,9 +6,9 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import hackathonnatura.edeploy.com.br.hackathonnatura.listerner.ResponseListerner;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
 
@@ -26,7 +26,7 @@ class RequestImpl implements Request {
     ApiRetrofit apiRetrofit;
 
     @Override
-    public void atualizaListaServidor(ArrayList<Consultora> lisUpdate) {
+    public void atualizaListaServidor(ResponseListerner responseListerner) {
         ConsultoraDao consultoraDao = new ConsultoraDao(context);
         List<Consultora> consultoras = consultoraDao.recuperarTodos();
     }
