@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/circle_check"
+                android:scaleType="fitXY"
+                android:layout_gravity="center_vertical|center"/>
+
+            <TextView
+                android:id="@+id/text_view_success_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/colorGrayDark"
+                android:text="@string/dialog_success_message"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_cn_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="30dp">
+
+                <TextView
+                    android:id="@+id/text_view_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGrayLight"
+                    android:text="@string/dialog_code"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/text_view_code_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorGrayLight"
+                    android:text="@string/dialog_code_value"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_ok"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/ok"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                android:layout_gravity="center_vertical|center"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
