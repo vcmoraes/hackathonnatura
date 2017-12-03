@@ -62,7 +62,7 @@ class RequestImpl implements Request {
             participantes.add(participante);
         }
         UpdateRequest updateRequest = new UpdateRequest();
-        updateRequest.setEventoID(1234);
+        updateRequest.setEventoID("1234");
         updateRequest.setParticipantes(participantes);
         apiRetrofit.getAPI().postUpdateUsers(updateRequest).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<Object>() {
             @Override

@@ -16,16 +16,16 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.model.Participante;
 public class UpdateRequest implements Serializable {
 
     @SerializedName("event_id")
-    private int eventoID;
+    private String eventoID;
 
     @SerializedName("participants")
     private ArrayList<Participante> participantes;
 
-    public int getEventoID() {
+    public String getEventoID() {
         return eventoID;
     }
 
-    public void setEventoID(int eventoID) {
+    public void setEventoID(String eventoID) {
         this.eventoID = eventoID;
     }
 
