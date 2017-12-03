@@ -13,9 +13,7 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.Mask;
 import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
-import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
 import hackathonnatura.edeploy.com.br.hackathonnatura.sql.dao.ConsultoraDao;
-import hackathonnatura.edeploy.com.br.hackathonnatura.view.fragment.NaturaDialogFragment;
 
 @EActivity(R.layout.activity_anonymous)
 public class AnonymousActivity extends BaseActivity {
@@ -48,39 +46,17 @@ public class AnonymousActivity extends BaseActivity {
     void onButtonRegister() {
 
         if (!this.validate()) {
-            showMessage(getString(R.string.nome_cn_vazio), null, DialogType.ERROR);
+            showMessage(getString(R.string.nome_cn_vazio), null, DialogType.ERROR, false);
             return;
         }
 
         Consultora consultora = new Consultora();
 
-        String uuid = consultora.getUuid();
-
-        consultora.setId(uuid);
         consultora.setNome(editTextName.getText().toString());
         consultora.setTelefone(editTextPhoneNumber.getText().toString());
         consultora.setDateCheckin(Calendar.getInstance().getTime());
         consultoraDao.salvar(consultora);
-        post(new UpdateList());
 
-        showMessage(editTextName.getText().toString(), uuid, DialogType.SUCCESS);
-    }
-
-    void showMessage(String message, String code, DialogType dialogType) {
-        NaturaDialogFragment naturaDialog = new NaturaDialogFragment();
-
-        if (dialogType == DialogType.SUCCESS) {
-            naturaDialog.setCnCode(this, code);
-            naturaDialog.setCnName(this, message);
-        } else {
-            naturaDialog.setMessage(this, message, dialogType);
-        }
-        naturaDialog.setClickListener(new NaturaDialogFragment.ClickListener() {
-            @Override
-            public void onClick() {
-
-            }
-        });
-        naturaDialog.show(this.getFragmentManager(), "");
+        showMessage(editTextName.getText().toString(), consultora.getUuid(), DialogType.SUCCESS, true);
     }
 }

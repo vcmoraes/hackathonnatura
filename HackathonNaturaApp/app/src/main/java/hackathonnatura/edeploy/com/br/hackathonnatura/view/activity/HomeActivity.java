@@ -21,6 +21,7 @@ import hackathonnatura.edeploy.com.br.hackathonnatura.R;
 import hackathonnatura.edeploy.com.br.hackathonnatura.adapter.PagerAdapterFragment;
 import hackathonnatura.edeploy.com.br.hackathonnatura.contract.HomeContract;
 import hackathonnatura.edeploy.com.br.hackathonnatura.custom.CustomViewPager;
+import hackathonnatura.edeploy.com.br.hackathonnatura.enums.DialogType;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.Consultora;
 import hackathonnatura.edeploy.com.br.hackathonnatura.model.UpdateList;
 import hackathonnatura.edeploy.com.br.hackathonnatura.presenter.HomePresenter;
@@ -50,6 +51,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     private ConsultoraDao consultoraDao;
 
     private boolean updateList;
+    private boolean updateAnonimo;
 
     @AfterViews
     public void init() {
@@ -88,6 +90,12 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         super.onResume();
         if (updateList) {
             updateList = false;
+            tabLayout.getTabAt(0).select();
+            post(new UpdateList());
+        }
+        if (updateAnonimo) {
+            updateAnonimo = false;
+            tabLayout.getTabAt(1).select();
             post(new UpdateList());
         }
     }
@@ -112,9 +120,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
                     }
                     consultoraDao.salvar(consultora);
                     updateList = true;
+                    showMessage(result[1], consultora.getUuid(), DialogType.SUCCESS, false);
                 } catch (Exception ignore) {
                     ignore.printStackTrace();
                 }
+                break;
+            case Constants.RESULT_ANONYMOUS:
+                updateAnonimo = true;
                 break;
         }
     }
@@ -122,16 +134,17 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
     @OnActivityResult(Constants.REQUEST_ANONYMOUS)
     void onResultAnonymous(int resultCode, Intent data) {
         switch (resultCode) {
-            case RESULT_OK:
-                try {
-                    String teste;
-                    teste = "";
-                    updateList = true;
-                } catch (Exception ignore) {
-                    ignore.printStackTrace();
-                }
+            case Constants.RESULT_ANONYMOUS:
+                updateAnonimo = true;
                 break;
         }
+    }
+
+    @Click(R.id.lista_presenca)
+    void onListaPresenca() {
+        consultoraDao.deletarTodos();
+        tabLayout.getTabAt(0).select();
+        post(new UpdateList());
     }
 
     @Click(R.id.btn_sicronizar)
@@ -155,5 +168,4 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
         progressContainer.setVisibility(View.GONE);
         Toast.makeText(this, "Verifique sua conexão e tente novamente!", Toast.LENGTH_SHORT).show();
     }
-
 }

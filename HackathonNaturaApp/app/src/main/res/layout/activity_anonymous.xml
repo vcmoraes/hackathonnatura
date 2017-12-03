@@ -57,15 +57,14 @@
             android:layout_width="220dip"
             android:layout_height="40dip"
             android:layout_gravity="center_vertical|center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/round_edit_text"
             android:ems="10"
             android:hint="@string/name"
-            android:imeOptions="actionNext"
             android:maxLines="1"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:singleLine="true">
 
-            <requestFocus />
         </EditText>
 
         <EditText
@@ -77,7 +76,8 @@
             android:background="@drawable/round_edit_text"
             android:hint="@string/telefone"
             android:inputType="number"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/button_register"

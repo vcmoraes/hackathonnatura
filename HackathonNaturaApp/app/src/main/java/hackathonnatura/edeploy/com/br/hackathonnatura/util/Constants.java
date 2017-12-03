@@ -12,4 +12,7 @@ public class Constants {
     //REQUEST CODE
     public static final int REQUEST_BARCODE = 17;
     public static final int REQUEST_ANONYMOUS = 18;
+
+    //RESULT CODE
+    public static final int RESULT_ANONYMOUS = 50;
 }
