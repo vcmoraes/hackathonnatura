@@ -23,4 +23,10 @@ public class MockLoginActivity extends BaseActivity {
         Mock1Activity_.intent(this).start();
         finish();
     }
+
+    @Click(R.id.image_mock)
+    void onMock() {
+        Mock1Activity_.intent(this).start();
+        finish();
+    }
 }

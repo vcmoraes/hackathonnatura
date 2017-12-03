@@ -159,6 +159,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     @Override
     public void onSucess() {
+        post(new UpdateList());
         progressContainer.setVisibility(View.GONE);
         Toast.makeText(this, "Dados Atualizados com sucesso!", Toast.LENGTH_SHORT).show();
     }
