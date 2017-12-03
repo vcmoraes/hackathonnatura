@@ -92,11 +92,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
             updateList = false;
             tabLayout.getTabAt(0).select();
             post(new UpdateList());
+            enviarDados(false);
         }
         if (updateAnonimo) {
             updateAnonimo = false;
             tabLayout.getTabAt(1).select();
             post(new UpdateList());
+            enviarDados(false);
         }
     }
 
@@ -150,11 +152,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
 
     @Click(R.id.btn_sicronizar)
     void onButtonSicronizar() {
-        enviarDados();
+        enviarDados(true);
     }
 
-    private void enviarDados() {
-        progressContainer.setVisibility(View.VISIBLE);
+    private void enviarDados(boolean blockScreen) {
+        if (blockScreen) {
+            progressContainer.setVisibility(View.VISIBLE);
+        }
         presenter.atualizaListaServidor();
     }
 

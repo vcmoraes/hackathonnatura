@@ -35,7 +35,7 @@ public class BaseActivity extends AppCompatActivity {
         naturaDialog.setClickListener(new NaturaDialogFragment.ClickListener() {
             @Override
             public void onClick() {
-                if(isFinish) {
+                if (isFinish) {
                     setResult(RESULT_ANONYMOUS);
                     finish();
                 }
