@@ -117,6 +117,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.IHomeView
                         consultora.setDateCheckin(Calendar.getInstance().getTime());
                     } else {
                         consultora.setDateCheckout(Calendar.getInstance().getTime());
+                        consultora.setServer(false);
                     }
                     consultoraDao.salvar(consultora);
                     updateList = true;
